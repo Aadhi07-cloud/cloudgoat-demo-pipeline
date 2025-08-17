@@ -1,0 +1,27 @@
+name: Destroy
+on:
+  workflow_dispatch:
+    inputs:
+      user_id:
+        required: true
+        type: string
+      scenario:
+        required: true
+        type: string
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: infra-demo
+        run: terraform init
+
+      - name: Terraform Destroy
+        working-directory: infra-demo
+        run: terraform destroy -auto-approve \
+             -var="user_id=${{ github.event.inputs.user_id }}" \
+             -var="scenario=${{ github.event.inputs.scenario }}"
