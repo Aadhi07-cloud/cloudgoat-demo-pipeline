@@ -22,6 +22,4 @@ jobs:
 
       - name: Terraform Apply
         working-directory: infra-demo
-        run: terraform apply -auto-approve \
-             -var="user_id=${{ github.event.inputs.user_id }}" \
-             -var="scenario=${{ github.event.inputs.scenario }}"
+        run: terraform apply -auto-approve -var="user_id=${{ github.event.inputs.user_id }}" -var="scenario=${{ github.event.inputs.scenario }}"
