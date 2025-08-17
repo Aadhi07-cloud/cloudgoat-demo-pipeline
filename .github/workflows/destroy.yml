@@ -22,6 +22,5 @@ jobs:
 
       - name: Terraform Destroy
         working-directory: infra-demo
-        run: terraform destroy -auto-approve \
-             -var="user_id=${{ github.event.inputs.user_id }}" \
-             -var="scenario=${{ github.event.inputs.scenario }}"
+        run: terraform destroy -auto-approve -var="user_id=${{ github.event.inputs.user_id }}" -var="scenario=${{ github.event.inputs.scenario }}"
+
